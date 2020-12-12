@@ -13,7 +13,7 @@ export class LoginPage implements OnInit {
   email: string = null;
   password: string = null;
   message: string = null;
-  re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  email_validation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   constructor(
     private router: Router,
     private apiCallsService: ApiCallsService,
@@ -60,7 +60,7 @@ export class LoginPage implements OnInit {
       this.presentToast("Please enter the password");
       return;
     }
-    if (!this.re.test(this.email)) {
+    if (!this.email_validation.test(this.email)) {
       console.log("Email is not in correct format");
       this.presentToast("Email format is not correct");
       return;
