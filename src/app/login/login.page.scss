@@ -1,0 +1,84 @@
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #0a3d62;
+}
+
+#header ion-title {
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+#header ion-icon {
+  font-weight: bold;
+  color: #fff;
+  font-size: 30px;
+}
+
+#heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#heading strong {
+  align-items: center;
+  margin-top: 20px;
+}
+
+#heading p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px;
+}
+
+#login_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#login_form ion-input {
+  border: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+#login_form ion-button {
+  width: 100%;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: none;
+  background-color: #2475b0;
+}
+
+#forgot_password {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#forgot_password a {
+  text-align: center;
+  font-weight: bold;
+}
+
+#signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#signup a {
+  text-align: center;
+  font-weight: bold;
+}

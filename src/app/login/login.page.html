@@ -1,0 +1,33 @@
+<ion-header id="header">
+  <ion-icon name="chevron-back-outline" (click)="Back()"></ion-icon>
+  <ion-title>Login</ion-title>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row id="heading">
+      <strong>Enter to the app</strong>
+      <p>Please enter the email and password to login</p>
+    </ion-row>
+    <ion-row id="login_form">
+      <ion-input
+        placeholder="Enter email"
+        [(ngModel)]="email"
+        type="text"
+      ></ion-input>
+      <ion-input
+        placeholder="Enter password"
+        [(ngModel)]="password"
+        type="password"
+      ></ion-input>
+      <ion-button (click)="Login()" expand="full">Log in</ion-button>
+    </ion-row>
+    <ion-row id="forgot_password">
+      <a>Forgot password</a>
+    </ion-row>
+
+    <ion-row id="signup">
+      <a>Dont have a account? Signup</a>
+    </ion-row>
+  </ion-grid>
+</ion-content>
