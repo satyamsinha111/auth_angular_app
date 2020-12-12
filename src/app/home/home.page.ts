@@ -23,9 +23,12 @@ export class HomePage {
     this.getDoctorsByPage(this.page);
   }
   ngAfterViewInit() {
-    if (!this.storage.get("token")) {
-      this.router.navigate(["/login"]);
-    }
+    this.storage.get("token").then((response) => {
+      console.log(response);
+      if (!response) {
+        this.router.navigate(["/welcome"]);
+      }
+    });
   }
   getDoctorsByPage(page: Number) {
     this.api_calls.getDoctors(page).subscribe((doctors) => {
