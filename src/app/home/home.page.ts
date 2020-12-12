@@ -13,18 +13,10 @@ export class HomePage {
     private router: Router,
     private storage: Storage
   ) {}
-  page: Number = 1;
+  page = 1;
   total_page: Number = null;
-  next_disabled: Boolean = false;
-  //Adding demo data for removing warnings
-  public doctors = [
-    {
-      avatar: null,
-      first_name: null,
-      last_name: null,
-      email: null,
-    },
-  ];
+
+  public doctors = [];
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -35,31 +27,11 @@ export class HomePage {
       this.router.navigate(["/login"]);
     }
   }
-  prevPage() {
-    console.log(this.page);
-    if (this.page <= this.total_page || this.page > 0) {
-      console.log("hello", this.page);
-      this.page = +this.page - 1;
-      this.api_calls.getDoctors(this.page).subscribe((doctors) => {
-        this.doctors = [...doctors.data];
-      });
-    }
-  }
-
   getDoctorsByPage(page: Number) {
-    if (this.total_page) {
-      if (this.page > this.total_page) {
-        this.next_disabled = true;
-        return;
-      }
-    }
     this.api_calls.getDoctors(page).subscribe((doctors) => {
-      console.log(doctors.total_pages);
+      console.log("console.log total pages", doctors.total_pages);
       this.total_page = doctors.total_pages;
       this.doctors = [...doctors.data];
-      if (this.page <= this.total_page) {
-        this.page = +this.page + 1;
-      }
     });
     console.log("Called");
   }
@@ -67,6 +39,19 @@ export class HomePage {
     this.storage.remove("token").then((response) => {
       console.log(response);
       this.router.navigate(["/"]);
+    });
+  }
+
+  loadData(event) {
+    console.log(event);
+    this.page++;
+    this.api_calls.getDoctors(this.page).subscribe((doctors) => {
+      console.log("console.log total pages", doctors.total_pages);
+      this.total_page = doctors.total_pages;
+      doctors.data.map((doctor, index) => {
+        this.doctors.push(doctor);
+      });
+      event.target.complete();
     });
   }
 }
